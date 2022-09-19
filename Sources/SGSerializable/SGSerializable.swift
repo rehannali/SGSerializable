@@ -1,19 +1,20 @@
+//
+//  SGSerializable.swift
+//
+//
+//  Created by Rehan Ali on 16/09/2022.
+//
+
 import Foundation
 
 @propertyWrapper
 public final class SGSerializable<Value> {
     public var wrappedValue: Value
     public var name: String?
-    internal var type: CodableType
     
-    public enum CodableType {
-        case int, string, float, double, bool, none
-    }
-    
-    public init(wrappedValue: Value, name: String? = nil, type: CodableType = .none) {
+    public init(wrappedValue: Value, name: String? = nil) {
         self.wrappedValue = wrappedValue
         self.name = name
-        self.type = type
     }
 }
 

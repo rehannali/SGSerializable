@@ -7,7 +7,11 @@
 
 import Foundation
 
-public protocol SGEncodable: Encodable {}
+public protocol SGEncodable: Encodable {
+    var dictionary: [String: Any] { get }
+    func jsonData() throws -> Data
+    func jsonString(encoding: String.Encoding) throws -> String?
+}
 
 extension SGEncodable {
     public func encode(to encoder: Encoder) throws {

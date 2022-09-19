@@ -9,6 +9,10 @@ import Foundation
 
 public protocol SGDecodable: Decodable {
     init()
+    static func initialize(data: Data) throws -> Self
+    static func initialize<T: SGDecodable>(data: Data, type: T.Type) throws -> T
+    static func initialize(with json: String, encoding: String.Encoding) throws -> Self
+    static func initialize(fromURL url: URL) throws -> Self
 }
 
 extension SGDecodable {
