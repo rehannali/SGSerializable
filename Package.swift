@@ -6,20 +6,27 @@ import PackageDescription
 let package = Package(
     name: "SGSerializable",
     platforms: [
-        .iOS(.v11), .macOS(.v10_15)
+        .iOS(.v11),
+        .macOS(.v10_15)
     ],
     products: [
         .library(
             name: "SGSerializable",
             targets: ["SGSerializable"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "5.0.0")),
+        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "10.0.0"))
+    ],
     targets: [
         .target(
             name: "SGSerializable",
             dependencies: []),
         .testTarget(
             name: "SGSerializableTests",
-            dependencies: ["SGSerializable"]),
+            dependencies: ["SGSerializable", "Quick", "Nimble"]),
+    ],
+    swiftLanguageVersions: [
+        .v5
     ]
 )
