@@ -1,13 +1,15 @@
 //
-//  NSDictionary+Extension.swift
+// NSDictionary+Extension.swift
+// SGSerializable
 //
-//  Created by Rehan Ali on 16/07/2020.
-//  Copyright © 2020 Rehan Ali. All rights reserved.
+// Created by Rehan Ali on 07/10/2022 at 7:59 PM.
+// Copyright © 2022 Rehan Ali. All rights reserved.
 //
 
 import Foundation
 
 public extension NSDictionary {
+        /// Get swift Dictionary from `NSDictionary`
     var swiftDictionary: [String: Any] {
         var dict: [String: Any] = [:]
         let keys = allKeys.compactMap{ $0 as? String }
@@ -17,22 +19,25 @@ public extension NSDictionary {
         return dict
     }
     
+        /// Iterate over object while making dictionary
+        /// - Parameter object: Any object conform to `NSObject/NSObjectProtocol`
+        /// - Returns: Object attribute value
     private func convertObjectsToSwiftDictionary(_ object: Any) -> Any {
-        if let _ = object as? Int,
-           let _ = object as? Double,
-           let _ = object as? Float,
-           let _ = object as? CGFloat,
-           let _ = object as? Bool,
-           let _ = object as? String{
+        if (object as? Int) != nil
+            || (object as? Double) != nil
+            || (object as? Float) != nil
+            || (object as? CGFloat) != nil
+            || (object as? Bool) != nil
+            || (object as? String) != nil {
             return unwrap(object)
         }
         
-        if let _ = object as? [Int],
-           let _ = object as? [Double],
-           let _ = object as? [Float],
-           let _ = object as? [CGFloat],
-           let _ = object as? [Bool],
-           let _ = object as? [String] {
+        if (object as? [Int]) != nil
+            || (object as? [Double]) != nil
+            || (object as? [Float]) != nil
+            || (object as? [CGFloat]) != nil
+            || (object as? [Bool]) != nil
+            || (object as? [String]) != nil {
             return unwrap(object)
         }
         
