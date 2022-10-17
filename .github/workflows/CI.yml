@@ -1,0 +1,28 @@
+name: Build Status
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: macos-12
+
+    steps:
+      - name: Get Source Files
+        uses: actions/checkout@v3
+      - name: Build Package
+        run: swift build -v
+      - name: Run tests
+        run: swift test --enable-code-coverage -v
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./.build/debug/codecov/SGSerializable.json
+          flags: unittests
+          name: codecov-serializable
+          fail_ci_if_error: true
+          verbose: true
