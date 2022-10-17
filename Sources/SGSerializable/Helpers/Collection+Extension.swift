@@ -1,12 +1,14 @@
 //
-//  Collection+Extension.swift
+// Collection+Extension.swift
+// SGSerializable
 //
-//  Created by Rehan Ali on 20/07/2020.
-//  Copyright © 2020 Rehan Ali. All rights reserved.
+// Created by Rehan Ali on 07/10/2022 at 7:59 PM.
+// Copyright © 2022 Rehan Ali. All rights reserved.
 //
 
 import Foundation
 
+    /// This is used for removed defaults or null values from Collections.
 public protocol NullOrDefaultValuesStripable {
     func strippingNullOrDefaults() -> Self
 }
@@ -16,7 +18,13 @@ extension Array: NullOrDefaultValuesStripable {
         return compactMap {
             switch $0 {
                 case let stripable as NullOrDefaultValuesStripable:
-                    return (stripable.strippingNullOrDefaults() as! Element)
+                    let value = (stripable.strippingNullOrDefaults() as! Element)
+                    if let dict = value as? [String: Any], dict.isEmpty {
+                        return nil
+                    }else if let array = value as? [Any], array.isEmpty {
+                        return nil
+                    }
+                    return value
                 case is NSNull:
                     return nil
                 case is String:
@@ -61,7 +69,13 @@ extension Dictionary: NullOrDefaultValuesStripable {
         return compactMapValues {
             switch $0 {
                 case let stripable as NullOrDefaultValuesStripable:
-                    return (stripable.strippingNullOrDefaults() as! Value)
+                    let value = (stripable.strippingNullOrDefaults() as! Value)
+                    if let dict = value as? [String: Any], dict.isEmpty {
+                        return nil
+                    }else if let array = value as? [Any], array.isEmpty {
+                        return nil
+                    }
+                    return value
                 case is NSNull:
                     return nil
                 case is String:
