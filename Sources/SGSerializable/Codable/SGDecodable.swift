@@ -1,18 +1,19 @@
 //
-//  SGDecodable.swift
-//  
+// SGDecodable.swift
+// SGSerializable
 //
-//  Created by Rehan Ali on 16/09/2022.
+// Created by Rehan Ali on 05/10/2022 at 7:57 PM.
+// Copyright © 2022 Rehan Ali. All rights reserved.
 //
 
 import Foundation
 
 public protocol SGDecodable: Decodable {
     init()
-    static func initialize(data: Data) throws -> Self
-    static func initialize<T: SGDecodable>(data: Data, type: T.Type) throws -> T
+    static func initialize(with data: Data) throws -> Self
+    static func initialize<T: SGDecodable>(with data: Data, type: T.Type) throws -> T
     static func initialize(with json: String, encoding: String.Encoding) throws -> Self
-    static func initialize(fromURL url: URL) throws -> Self
+    static func initialize(from url: URL) throws -> Self
 }
 
 extension SGDecodable {
@@ -37,7 +38,7 @@ extension SGDecodable {
                 try decodableValue.decodeValue(from: container, with: key)
             }
             mirror = mirror?.superclassMirror
-        }while mirror != nil
+        } while mirror != nil
     }
 }
 

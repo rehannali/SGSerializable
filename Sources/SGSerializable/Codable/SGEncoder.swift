@@ -1,8 +1,9 @@
 //
-//  SGEncoder.swift
-//  
+// SGEncoder.swift
+// SGSerializable
 //
-//  Created by Rehan Ali on 16/09/2022.
+// Created by Rehan Ali on 06/10/2022 at 7:57 PM.
+// Copyright © 2022 Rehan Ali. All rights reserved.
 //
 
 import Foundation
