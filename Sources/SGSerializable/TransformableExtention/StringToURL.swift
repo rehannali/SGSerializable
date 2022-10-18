@@ -14,7 +14,7 @@ public struct StringToURL: SGTranformable {
     public typealias ToType = URL
     
     public static func transform(from value: String?) -> URL? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return URL(string: value)
     }
     

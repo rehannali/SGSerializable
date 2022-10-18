@@ -22,12 +22,12 @@ public struct StringToDateRFC3339: SGTranformable {
     }
     
     public static func transform(from value: String?) -> Date? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return StringToDateRFC3339.formatted.date(from: value)
     }
     
     public static func transform(from value: Date?) -> String? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return StringToDateRFC3339.formatted.string(from: value)
     }
 }

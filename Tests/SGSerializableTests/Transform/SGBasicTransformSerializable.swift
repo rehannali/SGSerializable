@@ -101,12 +101,12 @@ fileprivate struct IntToString: SGTranformable {
     typealias ToType = String
     
     static func transform(from value: Int?) -> String? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return String(value)
     }
 
     static func transform(from value: String?) -> Int? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return Int(value) ?? 0
     }
 }
