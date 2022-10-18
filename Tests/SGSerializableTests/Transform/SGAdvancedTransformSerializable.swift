@@ -52,7 +52,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     let nsDict = try? JSONSerializer.toDictionary(string)
                     let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
-                    expect(dict?["base64Encoded"] as? String).to(equal("SGkhIHRoZXJlLiBJJ20gaGFwcHkgdG8gc2VlIHlvdS4="))
+                    expect(dict?["base64Encoded"] as? String) == "SGkhIHRoZXJlLiBJJ20gaGFwcHkgdG8gc2VlIHlvdS4="
                 }
                 
                 it("should encode propery using custom") {
@@ -60,7 +60,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     
                     let dict = object?.dictionary
                     expect(dict).toNot(beNil())
-                    expect(dict?["base64Encoded"] as? String).to(equal("SGkhIHRoZXJlLiBJJ20gaGFwcHkgdG8gc2VlIHlvdS4="))
+                    expect(dict?["base64Encoded"] as? String) == "SGkhIHRoZXJlLiBJJ20gaGFwcHkgdG8gc2VlIHlvdS4="
                 }
             }
             
@@ -70,16 +70,16 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = try? self.jsonDecoder.decode(StringURL.self, from: jsonData)
                     
                     expect(object).toNot(beNil())
-                    expect(object?.url).to(equal(URL(string: "https://www.apple.com")))
-                    expect(object?.$url).to(equal(URL(string: "https://www.apple.com")!))
+                    expect(object?.url) == URL(string: "https://www.apple.com")
+                    expect(object?.$url) == URL(string: "https://www.apple.com")!
                 }
                 
                 it("should decode properly using custom") {
                     object = try? StringURL.initialize(with: jsonData)
                     
                     expect(object).toNot(beNil())
-                    expect(object?.url).to(equal(URL(string: "https://www.apple.com")))
-                    expect(object?.$url).to(equal(URL(string: "https://www.apple.com")!))
+                    expect(object?.url) == URL(string: "https://www.apple.com")
+                    expect(object?.$url) == URL(string: "https://www.apple.com")!
                 }
                 
                 it("should encode propery using default") {
@@ -94,7 +94,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     let nsDict = try? JSONSerializer.toDictionary(string)
                     let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
-                    expect(dict?["url"] as? String).to(equal("https://www.apple.com"))
+                    expect(dict?["url"] as? String) == "https://www.apple.com"
                 }
                 
                 it("should encode propery using custom") {
@@ -102,7 +102,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     
                     let dict = object?.dictionary
                     expect(dict).toNot(beNil())
-                    expect(dict?["url"] as? String).to(equal("https://www.apple.com"))
+                    expect(dict?["url"] as? String) == "https://www.apple.com"
                 }
             }
             
@@ -112,7 +112,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = RFCDate()
                     expect(object).toNot(beNil())
                     expect(object?.date).to(beNil())
-                    expect(object?.$date).to(equal(Date(timeIntervalSince1970: 0)))
+                    expect(object?.$date) == Date(timeIntervalSince1970: 0)
                 }
                 
                 it("should decode properly using Default") {
@@ -122,8 +122,8 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     let actualDate = calendar.date(from: .init(timeZone: .init(secondsFromGMT: 0), year: 2021, month: 9, day: 12, hour: 23, minute: 43, second: 33))
                     
                     expect(object).toNot(beNil())
-                    expect(object?.date).to(equal(actualDate))
-                    expect(object?.$date).to(equal(actualDate!))
+                    expect(object?.date) == actualDate
+                    expect(object?.$date) == actualDate!
                 }
                 
                 it("should decode properly using custom") {
@@ -133,8 +133,8 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     let actualDate = calendar.date(from: .init(timeZone: .init(secondsFromGMT: 0), year: 2021, month: 9, day: 12, hour: 23, minute: 43, second: 33))
                     
                     expect(object).toNot(beNil())
-                    expect(object?.date).to(equal(actualDate))
-                    expect(object?.$date).to(equal(actualDate!))
+                    expect(object?.date) == actualDate
+                    expect(object?.$date) == actualDate!
                 }
                 
                 it("should encode propery using default") {
@@ -149,7 +149,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     let nsDict = try? JSONSerializer.toDictionary(string)
                     let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
-                    expect(dict?["datetime"] as? String).to(equal("2021-09-12T23:43:33+0000"))
+                    expect(dict?["datetime"] as? String) == "2021-09-12T23:43:33+0000"
                 }
                 
                 it("should encode propery using custom") {
@@ -157,7 +157,7 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     
                     let dict = object?.dictionary
                     expect(dict).toNot(beNil())
-                    expect(dict?["datetime"] as? String).to(equal("2021-09-12T23:43:33+0000"))
+                    expect(dict?["datetime"] as? String) == "2021-09-12T23:43:33+0000"
                 }
             }
             

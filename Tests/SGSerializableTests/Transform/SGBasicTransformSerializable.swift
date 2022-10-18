@@ -48,8 +48,8 @@ class SGBasicTransformSerializable: QuickSpec, DecodableTestSpec, EncodableTestS
                     let dict = nsDict?.swiftDictionary
                     
                     expect(dict).toNot(beNil())
-                    expect(dict?["num"] as? Int).to(equal(20))
-                    expect(dict?["sum"] as? Int).to(equal(60))
+                    expect(dict?["num"] as? Int) == 20
+                    expect(dict?["sum"] as? Int) == 60
                 }
                 
                 it("should encode using Custom") {
