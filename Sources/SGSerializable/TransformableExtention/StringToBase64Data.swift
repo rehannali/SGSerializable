@@ -14,12 +14,12 @@ public struct StringToBase64Data: SGTranformable {
     public typealias ToType = Data
     
     public static func transform(from value: String?) -> Data? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return Data(base64Encoded: value)
     }
     
     public static func transform(from value: Data?) -> String? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return value.base64EncodedString()
     }
 }

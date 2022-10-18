@@ -20,12 +20,12 @@ public struct StringToDateISO8601: SGTranformable {
     }
     
     public static func transform(from value: String?) -> Date? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return StringToDateISO8601.dateFormatter.date(from: value)
     }
     
     public static func transform(from value: Date?) -> String? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return StringToDateISO8601.dateFormatter.string(from: value)
     }
 }
