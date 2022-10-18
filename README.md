@@ -4,6 +4,7 @@ Enhancement of current codable protocol using property wrappers for easier acces
 
 [![Swift Package Manager](https://img.shields.io/badge/swift%20package%20manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![Platforms](https://img.shields.io/static/v1?label=Platforms&message=iOS%20|%20macOS%20|%20tvOS%20|%20watchOS%20|%20Linux&color=brightgreen)
+![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)
 [![Build Status](https://github.com/rehannali/SGSerializable/actions/workflows/CI.yml/badge.svg)](https://github.com/rehannali/SGSerializable/actions/workflows/CI.yml)
 
 - [SGSerializable](#sgserializable)
