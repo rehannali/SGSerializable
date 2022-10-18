@@ -1,0 +1,29 @@
+version: 2.1
+
+jobs:
+  build-package:
+    macos:
+      xcode: 14.0.1
+
+    steps:
+      - checkout
+      - runs:
+          name: Build Package
+          command: swift build -v
+  test-package:
+    macos:
+      xcode: 14.0.1
+
+    steps:
+      - checkout
+      - runs:
+          name: Test Package
+          command: swift test --enable-code-coverage -v
+
+workflows:
+  build-test:
+    jobs:
+      - build-package
+      - test-package:
+          requires:
+            - build-package
