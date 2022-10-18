@@ -40,11 +40,12 @@ class SGBasicTransformSerializable: QuickSpec, DecodableTestSpec, EncodableTestS
                 
                 it("should encode using default") {
                     let encodeData = try? self.jsonEncoder.encode(object)
-                    guard let encodeData, let json = String(data: encodeData, encoding: .utf8) else {
+                    guard let encodeData = encodeData, let json = String(data: encodeData, encoding: .utf8) else {
                         fail("Unable to get valid data")
                         return
                     }
-                    let dict = try? JSONSerializer.toDictionary(json).swiftDictionary
+                    let nsDict = try? JSONSerializer.toDictionary(json)
+                    let dict = nsDict?.swiftDictionary
                     
                     expect(dict).toNot(beNil())
                     expect(dict?["num"] as? Int).to(equal(20))
