@@ -16,13 +16,4 @@ jobs:
       - name: Build Package
         run: swift build -v
       - name: Run tests
-        run: swift test --enable-code-coverage -v
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./.build/debug/codecov/
-          flags: unittests
-          name: codecov-serializable
-          fail_ci_if_error: true
-          verbose: true
+        run: swift test -v
