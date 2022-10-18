@@ -29,12 +29,10 @@ workflows:
             branches:
               only:
                 - master
-                - develop
       - test-package:
           filters:
             branches:
               only:
                 - master
-                - develop
           requires:
             - build-package
