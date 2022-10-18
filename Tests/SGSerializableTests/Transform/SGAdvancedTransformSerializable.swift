@@ -44,12 +44,13 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = try? Base64Encoded.initialize(with: jsonData)
                     let data = try? self.jsonEncoder.encode(object)
                     
-                    guard let data , let string = String(data: data, encoding: .utf8) else {
+                    guard let data = data , let string = String(data: data, encoding: .utf8) else {
                         fail("Unable to get valid string")
                         return
                     }
                     
-                    let dict = try? JSONSerializer.toDictionary(string).swiftDictionary
+                    let nsDict = try? JSONSerializer.toDictionary(string)
+                    let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
                     expect(dict?["base64Encoded"] as? String).to(equal("SGkhIHRoZXJlLiBJJ20gaGFwcHkgdG8gc2VlIHlvdS4="))
                 }
@@ -85,12 +86,13 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = try? StringURL.initialize(with: jsonData)
                     let data = try? self.jsonEncoder.encode(object)
                     
-                    guard let data , let string = String(data: data, encoding: .utf8) else {
+                    guard let data = data , let string = String(data: data, encoding: .utf8) else {
                         fail("Unable to get valid string")
                         return
                     }
                     
-                    let dict = try? JSONSerializer.toDictionary(string).swiftDictionary
+                    let nsDict = try? JSONSerializer.toDictionary(string)
+                    let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
                     expect(dict?["url"] as? String).to(equal("https://www.apple.com"))
                 }
@@ -139,12 +141,13 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = try? RFCDate.initialize(with: jsonData)
                     let data = try? self.jsonEncoder.encode(object)
                     
-                    guard let data , let string = String(data: data, encoding: .utf8) else {
+                    guard let data = data , let string = String(data: data, encoding: .utf8) else {
                         fail("Unable to get valid string")
                         return
                     }
                     
-                    let dict = try? JSONSerializer.toDictionary(string).swiftDictionary
+                    let nsDict = try? JSONSerializer.toDictionary(string)
+                    let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
                     expect(dict?["datetime"] as? String).to(equal("2021-09-12T23:43:33+0000"))
                 }
@@ -193,12 +196,13 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = try? ISODate.initialize(with: jsonData)
                     let data = try? self.jsonEncoder.encode(object)
                     
-                    guard let data , let string = String(data: data, encoding: .utf8) else {
+                    guard let data = data , let string = String(data: data, encoding: .utf8) else {
                         fail("Unable to get valid string")
                         return
                     }
                     
-                    let dict = try? JSONSerializer.toDictionary(string).swiftDictionary
+                    let nsDict = try? JSONSerializer.toDictionary(string)
+                    let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
                     expect(dict?["datetime"] as? String).to(equal("2021-09-12T23:43:33Z"))
                 }
@@ -247,12 +251,13 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     object = try? TimeIntervalDate.initialize(with: jsonData)
                     let data = try? self.jsonEncoder.encode(object)
                     
-                    guard let data , let string = String(data: data, encoding: .utf8) else {
+                    guard let data = data , let string = String(data: data, encoding: .utf8) else {
                         fail("Unable to get valid string")
                         return
                     }
                     
-                    let dict = try? JSONSerializer.toDictionary(string).swiftDictionary
+                    let nsDict = try? JSONSerializer.toDictionary(string)
+                    let dict = nsDict?.swiftDictionary
                     expect(dict).toNot(beNil())
                     expect(dict?["time"] as? TimeInterval).to(equal(1263008235))
                 }
