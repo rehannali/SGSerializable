@@ -6,6 +6,25 @@ Enhancement of current codable protocol using property wrappers for easier acces
 ![Platforms](https://img.shields.io/static/v1?label=Platforms&message=iOS%20|%20macOS%20|%20tvOS%20|%20watchOS%20|%20Linux&color=brightgreen)
 [![Build Status](https://github.com/rehannali/SGSerializable/actions/workflows/CI.yml/badge.svg)](https://github.com/rehannali/SGSerializable/actions/workflows/CI.yml)
 
+- [SGSerializable](#sgserializable)
+  - [Features](#features)
+      - [SGCodable](#sgcodable)
+      - [SGSerializable](#sgserializable-1)
+      - [SGTransformSerializable](#sgtransformserializable)
+    - [Example](#example)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Custom initializer](#custom-initializer)
+  - [Custom Transformer Implementation](#custom-transformer-implementation)
+    - [Custom initializer for tranformable](#custom-initializer-for-tranformable)
+  - [Classes to Dictionary](#classes-to-dictionary)
+    - [Strip Null or Default Values](#strip-null-or-default-values)
+  - [Helper Functions for [De/En]coding](#helper-functions-for-deencoding)
+      - [Decoable Helpers](#decoable-helpers)
+      - [Encodable Helpers](#encodable-helpers)
+    - [Contribute](#contribute)
+
 ## Features
 
 #### SGCodable
