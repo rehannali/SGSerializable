@@ -84,8 +84,8 @@ struct Person: SGCodable {
 
 ## Requirements
 
-- iOS 11.0+ / macOS 10.15+ / tvOS 11.0+ / watchOS 3.0+
-- Xcode 12+
+- iOS 11.0+ / macOS 10.15+ / tvOS 11.0+ / watchOS 6.0+
+- Xcode 13+
 - Swift 5.5+
 
 ## Installation
