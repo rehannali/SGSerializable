@@ -19,7 +19,7 @@ public final class SGTransformSerializable<Value: SGTranformable> {
     public var projectedValue: Value.ToType {
         set { wrappedValue = newValue }
         get {
-            guard let wrappedValue else {
+            guard let wrappedValue = wrappedValue else {
                 return getFallBack(Value.ToType.self)
             }
             return wrappedValue
