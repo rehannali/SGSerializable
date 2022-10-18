@@ -24,7 +24,17 @@ jobs:
 workflows:
   build-test:
     jobs:
-      - build-package
+      - build-package:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
       - test-package:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
           requires:
             - build-package
