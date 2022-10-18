@@ -7,18 +7,19 @@ jobs:
 
     steps:
       - checkout
-      - runs:
+      - run:
           name: Build Package
           command: swift build -v
+
   test-package:
     macos:
       xcode: 14.0.1
 
     steps:
       - checkout
-      - runs:
+      - run:
           name: Test Package
-          command: swift test --enable-code-coverage -v
+          command: swift test -v
 
 workflows:
   build-test:
