@@ -7,8 +7,19 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  build-12:
     runs-on: macos-12
+
+    steps:
+      - name: Get Source Files
+        uses: actions/checkout@v3
+      - name: Build Package
+        run: swift build -v
+      - name: Run tests
+        run: swift test -v
+        
+  build-11:
+    runs-on: macos-11
 
     steps:
       - name: Get Source Files
