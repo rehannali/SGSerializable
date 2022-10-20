@@ -21,6 +21,7 @@ Enhancement of current codable protocol using property wrappers for easier acces
     - [Custom initializer](#custom-initializer)
   - [Custom Transformer Implementation](#custom-transformer-implementation)
     - [Custom initializer for tranformable](#custom-initializer-for-tranformable)
+  - [Omit [En/De]coding](#omit-endecoding)
   - [Classes to Dictionary](#classes-to-dictionary)
     - [Strip Null or Default Values](#strip-null-or-default-values)
   - [Helper Functions for [De/En]coding](#helper-functions-for-deencoding)
@@ -245,6 +246,20 @@ StringToURL
 ```
 
 </details>
+
+## Omit [En/De]coding
+
+**There are  some cases when you don't want to encode to decode attributes. You can do it by simply add variable and don't use the property wrappers for that attribute.**
+
+```swift
+struct Animal: SGCodable {
+    @SGSerializable
+    var name: String?
+
+    // This will omit from [en/de]coding
+    var omitVariable: String?
+}
+```
 
 ## Classes to Dictionary
 
