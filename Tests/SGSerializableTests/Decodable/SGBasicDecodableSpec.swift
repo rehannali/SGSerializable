@@ -23,6 +23,7 @@ class SGBasicDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(person?.age).to(equal(54))
                     expect(person?.name).to(equal("Nadeem"))
                     expect(person?.city).to(equal("Karachi"))
+                    expect(person?.omit).to(beNil())
                 }
             }
             
@@ -34,6 +35,7 @@ class SGBasicDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(person?.age).to(equal(54))
                     expect(person?.name).to(equal("Nadeem"))
                     expect(person?.city).to(equal("Karachi"))
+                    expect(person?.omit).to(beNil())
                 }
             }
             
@@ -43,6 +45,7 @@ class SGBasicDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(person.name).toNot(beNil())
                     expect(person.name).to(equal(""))
                     expect(person.$name).to(beNil())
+                    expect(person.omit).to(beNil())
                 }
             }
             
@@ -55,6 +58,7 @@ class SGBasicDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(personRole?.name).to(equal("Nadeem"))
                     expect(personRole?.city).to(equal("Karachi"))
                     expect(personRole?.role).to(equal("admin"))
+                    expect(personRole?.omit).to(beNil())
                 }
             }
             
@@ -65,6 +69,7 @@ class SGBasicDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(person?.animmal).toNot(beNil())
                     expect(person?.animmal?.name).toNot(beNil())
                     expect(person?.animmal?.name).to(equal(""))
+                    expect(person?.omit).to(beNil())
                 }
                 
                 it("should decode properly") {
@@ -76,6 +81,7 @@ class SGBasicDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(person?.city).to(equal("Karachi"))
                     expect(person?.animmal).toNot(beNil())
                     expect(person?.animmal?.name).to(equal("Dog"))
+                    expect(person?.omit).to(beNil())
                 }
             }
         }
@@ -106,6 +112,8 @@ fileprivate class Person: SGDecodable {
     
     @SGSerializable(default: Animal(), key: "animal")
     var animmal: Animal?
+    
+    var omit: String?
     
     required init() {}
 }

@@ -46,6 +46,7 @@ class SGBasicEncodableSpec: QuickSpec, EncodableTestSpec, DecodableTestSpec {
                     expect(person?.name).to(equal("Nadeem"))
                     expect(person?.age).to(equal(23))
                     expect(person?.city).to(equal("Sharjah"))
+                    expect(person?.omit).to(beNil())
                 }
             }
             
@@ -57,10 +58,11 @@ class SGBasicEncodableSpec: QuickSpec, EncodableTestSpec, DecodableTestSpec {
                     expect(dict?["name"] as? String).to(equal("Nadeem"))
                     expect(dict?["age"] as? Int).to(equal(23))
                     expect(dict?["city"] as? String).to(equal("Sharjah"))
+                    expect(dict?["omit"] as? String).to(beNil())
                 }
             }
             
-            context("Inheritance") {
+            context("Composition") {
                 it("should encode properly") {
                     let personDict = person?.dictionary
                     let animalDict = person?.animmal?.dictionary
@@ -69,10 +71,11 @@ class SGBasicEncodableSpec: QuickSpec, EncodableTestSpec, DecodableTestSpec {
                     expect(animalDict).toNot(beNil())
                     expect(animalDict?["name"] as? String).to(equal("Dog"))
                     expect(animal?["name"] as? String).to(equal("Dog"))
+                    expect(personDict?["omit"] as? String).to(beNil())
                 }
             }
             
-            context("Composition") {
+            context("Inheritance") {
                 it("should encode properly") {
                     let role = role?.dictionary
                     expect(role).toNot(beNil())
@@ -80,6 +83,7 @@ class SGBasicEncodableSpec: QuickSpec, EncodableTestSpec, DecodableTestSpec {
                     expect(role?["name"] as? String).to(equal("Fransis"))
                     expect(role?["age"] as? Int).to(equal(43))
                     expect(role?["city"] as? String).to(equal("Michigan City"))
+                    expect(role?["omit"] as? String).to(beNil())
                 }
             }
         }
@@ -110,6 +114,8 @@ fileprivate class Person: SGEncodable, SGDecodable {
     
     @SGSerializable(default: Animal(), key: "animal")
     var animmal: Animal?
+    
+    var omit: String?
     
     required init() {}
 }

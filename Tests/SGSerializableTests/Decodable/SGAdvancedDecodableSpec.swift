@@ -24,6 +24,7 @@ final class SGAdvancedDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(object?.items).to(equal([]))
                     expect(object?.cryptography).to(equal([:]))
                     expect(object?.values).to(equal([]))
+                    expect(object?.omit).to(beNil())
                 }
             }
             
@@ -35,6 +36,7 @@ final class SGAdvancedDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(object?.items.count).to(equal(3))
                     expect(object?.cryptography.count).to(equal(2))
                     expect(object?.values?.count).to(equal(0))
+                    expect(object?.omit).to(beNil())
                 }
                 
                 it("should return count after decoding using custom") {
@@ -43,6 +45,7 @@ final class SGAdvancedDecodableSpec: QuickSpec, DecodableTestSpec {
                     expect(object).toNot(beNil())
                     expect(object?.items.count).to(equal(3))
                     expect(object?.values?.count).to(equal(0))
+                    expect(object?.omit).to(beNil())
                 }
             }
             
@@ -55,6 +58,7 @@ final class SGAdvancedDecodableSpec: QuickSpec, DecodableTestSpec {
                 it("Plain") {
                     expect(object).toNot(beNil())
                     expect(object?.key).to(equal("Basic"))
+                    expect(object?.omit).to(beNil())
                 }
                 
                 it("Array") {
@@ -107,4 +111,6 @@ fileprivate struct TestData: SGDecodable {
     
     @SGSerializable
     var values: [Double]?
+    
+    var omit: Int?
 }

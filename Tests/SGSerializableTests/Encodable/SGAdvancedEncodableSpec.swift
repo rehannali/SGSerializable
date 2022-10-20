@@ -40,6 +40,7 @@ class SGAdvancedEncodableSpec: QuickSpec, EncodableTestSpec, DecodableTestSpec {
                     let dict = object?.dictionary
                     expect(dict).toNot(beNil())
                     expect(dict?["key"] as? String).to(equal("Basic"))
+                    expect(dict?["omit"] as? Int).to(beNil())
                 }
             }
             
@@ -136,4 +137,6 @@ fileprivate struct TestData: SGCodable {
     
     @SGSerializable
     var values: [Double]?
+    
+    var omit: Int?
 }
