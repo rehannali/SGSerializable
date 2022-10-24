@@ -2,12 +2,15 @@
 
 Enhancement of current codable protocol using property wrappers for easier access and better [en/de]coding of JSON. The goal of these property wrappers is to avoid implementing custom initializer for decoder, encoder, sometimes coding keys and suffer through boilerplate code.
 
-[![Swift Package Manager](https://img.shields.io/badge/swift%20package%20manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+[![Language: Swift 5](https://img.shields.io/badge/language-swift5-f48041.svg?style=flat&color=brightgreen)](https://developer.apple.com/swift)
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://swift.org/package-manager/)
 ![Platforms](https://img.shields.io/static/v1?label=Platforms&message=iOS%20|%20macOS%20|%20tvOS%20|%20watchOS%20|%20Linux&color=brightgreen)
 ![MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg) </br>
 [![Build Status](https://github.com/rehannali/SGSerializable/actions/workflows/CI.yml/badge.svg)](https://github.com/rehannali/SGSerializable/actions/workflows/CI.yml)
 [![CircleCI](https://circleci.com/gh/rehannali/SGSerializable/tree/master.svg?style=svg)](https://circleci.com/gh/rehannali/SGSerializable/?branch=master)
+[![codebeat badge](https://codebeat.co/badges/6cc946ca-58ee-4ea4-8a3d-9d39ea7e463a)](https://codebeat.co/projects/github-com-rehannali-sgserializable-master)
 [![DeepSource](https://deepsource.io/gh/rehannali/SGSerializable.svg/?label=active+issues&show_trend=true&token=NJ557_fHlmvQMIpy9hTDjU6d)](https://deepsource.io/gh/rehannali/SGSerializable/?ref=repository-badge)
+![Release version](https://img.shields.io/github/release/rehannali/SGSerializable.svg?color=brightgreen)
 
 - [SGSerializable](#sgserializable)
   - [Features](#features)
