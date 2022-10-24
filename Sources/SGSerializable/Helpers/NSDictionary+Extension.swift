@@ -28,11 +28,8 @@ public extension NSDictionary {
             || (object as? Float) != nil
             || (object as? CGFloat) != nil
             || (object as? Bool) != nil
-            || (object as? String) != nil {
-            return unwrap(object)
-        }
-        
-        if (object as? [Int]) != nil
+            || (object as? String) != nil
+            || (object as? [Int]) != nil
             || (object as? [Double]) != nil
             || (object as? [Float]) != nil
             || (object as? [CGFloat]) != nil

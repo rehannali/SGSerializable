@@ -18,7 +18,7 @@ extension Array: NullOrDefaultValuesStripable {
         return compactMap {
             switch $0 {
                 case let stripable as NullOrDefaultValuesStripable:
-                    let value = (stripable.strippingNullOrDefaults() as! Element)
+                    guard let value = stripable.strippingNullOrDefaults() as? Element else { return nil }
                     if let dict = value as? [String: Any], dict.isEmpty {
                         return nil
                     }else if let array = value as? [Any], array.isEmpty {
@@ -69,7 +69,7 @@ extension Dictionary: NullOrDefaultValuesStripable {
         return compactMapValues {
             switch $0 {
                 case let stripable as NullOrDefaultValuesStripable:
-                    let value = (stripable.strippingNullOrDefaults() as! Value)
+                    guard let value = stripable.strippingNullOrDefaults() as? Value else { return nil }
                     if let dict = value as? [String: Any], dict.isEmpty {
                         return nil
                     }else if let array = value as? [Any], array.isEmpty {
