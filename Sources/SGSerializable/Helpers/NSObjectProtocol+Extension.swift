@@ -24,13 +24,13 @@ public extension NSObjectProtocol {
         
         return json.swiftDictionary
     }
-    
-        /// Unwarp value of attribute if present
-        /// - Parameter object: This can be anything like Int, Float, Dictionary, classes, struct etc
-        /// - Returns: Unwarped value if present otherwise `nil`
-    func unwrap<T>(_ object: T) -> Any {
-        let mirror = Mirror(reflecting: object)
-        guard mirror.displayStyle == .optional, let first = mirror.children.first else { return object }
-        return first.value
-    }
+}
+
+    /// Unwarp value of attribute if present
+    /// - Parameter object: This can be anything like Int, Float, Dictionary, classes, struct etc
+    /// - Returns: Unwarped value if present otherwise `nil`
+public func unwrap<T>(_ object: T) -> Any {
+    let mirror = Mirror(reflecting: object)
+    guard mirror.displayStyle == .optional, let first = mirror.children.first else { return object }
+    return first.value
 }
