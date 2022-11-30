@@ -267,7 +267,7 @@ struct Animal: SGCodable {
 ## Classes to Dictionary
 
 There is time we need to add custom function or computed property to provide dictionary from object as we write it manually.
-Now it is possible by conforming your class to `NSObject` or `NSObjectProtocol` and get dictionary with `object.swiftDictionary`
+Now it is possible by conforming your class to `NSObject` or `NSObjectProtocol` and get dictionary with `object.swiftDictionary` or you can convert any class and struct to dictionary by conforming to `SGDictionaryConverter`.
 
 ```swift
 class Person: NSObject {
