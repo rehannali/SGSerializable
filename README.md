@@ -24,10 +24,10 @@ Enhancement of current codable protocol using property wrappers for easier acces
     - [Custom initializer](#custom-initializer)
   - [Custom Transformer Implementation](#custom-transformer-implementation)
     - [Custom initializer for tranformable](#custom-initializer-for-tranformable)
-  - [Omit [En/De]coding](#omit-endecoding)
+  - [Omit \[En/De\]coding](#omit-endecoding)
   - [Classes to Dictionary](#classes-to-dictionary)
     - [Strip Null or Default Values](#strip-null-or-default-values)
-  - [Helper Functions for [De/En]coding](#helper-functions-for-deencoding)
+  - [Helper Functions for \[De/En\]coding](#helper-functions-for-deencoding)
       - [Decoable Helpers](#decoable-helpers)
       - [Encodable Helpers](#encodable-helpers)
     - [Contribute](#contribute)
@@ -279,6 +279,43 @@ class Person: NSObject {
 let person = Person()
 person.swiftDictionary
 ```
+
+```swift
+class Address: SGDictionaryConverter {
+    var street: String?
+    var city: String?
+    var state: String?
+    var country: String?
+}
+
+class Person: Address {
+    var name = "Frank"
+    var age = -1
+}
+
+let person = Person()
+person.toDictionary()
+```
+
+```swift
+struct Person: SGDictionaryConverter {
+    var name = "Frank"
+    var age = -1
+    var address: Address?
+}
+
+struct Address: SGDictionaryConverter {
+    var street: String?
+    var city: String?
+    var state: String?
+    var country: String?
+}
+
+let person = Person()
+person.toDictionary()
+```
+
+> **Inheritance and Composition works out of the box using `SGDictionaryConverter`.**
 
 ### Strip Null or Default Values
 
