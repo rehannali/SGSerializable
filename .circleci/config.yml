@@ -1,6 +1,19 @@
 version: 2.1
 
 jobs:
+  build-test-14-3:
+    macos:
+      xcode: 14.3
+
+    steps:
+      - checkout
+      - run:
+          name: Build Package
+          command: swift build -v
+      - run:
+          name: Test Package
+          command: swift test -v
+
   build-test-14:
     macos:
       xcode: 14.0.1
@@ -27,34 +40,21 @@ jobs:
           name: Test Package
           command: swift test -v
 
-  build-test-13-0:
-    macos:
-      xcode: 13.0.0
-
-    steps:
-      - checkout
-      - run:
-          name: Build Package
-          command: swift build -v
-      - run:
-          name: Test Package
-          command: swift test -v
 
 workflows:
   build-test:
     jobs:
+      - build-test-14-3:
+          filters:
+            branches:
+              only:
+                - master
       - build-test-14:
           filters:
             branches:
               only:
                 - master
       - build-test-13-4:
-          filters:
-            branches:
-              only:
-                - master
-
-      - build-test-13-0:
           filters:
             branches:
               only:
