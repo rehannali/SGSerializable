@@ -117,7 +117,7 @@ fileprivate let testDictionary = [
             "currency": "EURO",
             "level": 5,
             "title": "Dittybopper"
-        ],
+        ] as [String : Any],
         [
             "title": "Substitute Teacher",
             "amount": 50,
@@ -134,16 +134,16 @@ fileprivate let testDictionary1 = [
             "salary": [
                 "amount": 50,
                 "currency": "DOLLAR"
-            ],
+            ] as [String : Any],
             "level": 5,
             "title": "Dittybopper"
-        ],
+        ] as [String : Any],
         [
             "title": "Substitute Teacher",
             "salary": [
                 "amount": 100,
                 "currency": "EURO"
-            ],
+            ] as [String : Any],
             "level": 5
         ]
     ],
