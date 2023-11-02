@@ -12,22 +12,22 @@ import UIKit
 #endif
 
 extension SGSerializable {
-    func getFallBack<Value>(_ type: Value.Type) -> Value {
+    func getFallBack<V>(_ type: V.Type) -> V {
         switch self.type {
-            case .int: return 0 as! Value
-            case .double: return 0 as! Value
-            case .bool: return false as! Value
-            case .float: return 0 as! Value
-            case .string: return "" as! Value
-            case .auto: return processAuto(Value.self)
-            case .none: fatalError("\(Value.self) has been used before initialization.")
+            case .int: return 0 as! V
+            case .double: return 0 as! V
+            case .bool: return false as! V
+            case .float: return 0 as! V
+            case .string: return "" as! V
+            case .auto: return processAuto(V.self)
+            case .none: fatalError("\(V.self) has been used before initialization.")
         }
     }
 }
 
 extension SGTransformSerializable {
-    func getFallBack<Value>(_ type: Value.Type) -> Value {
-        return processAuto(Value.self)
+    func getFallBack<W>(_ type: W.Type) -> W {
+        return processAuto(W.self)
     }
 }
 
