@@ -270,6 +270,61 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                     expect(dict?["time"] as? TimeInterval).to(equal(1263008235))
                 }
             }
+            
+            context("Milliseconds Date") {
+                var object: MilliSecondDate?
+                it("should access default value before [En/De]Coding") {
+                    object = MilliSecondDate()
+                    expect(object).toNot(beNil())
+                    expect(object?.date).to(beNil())
+                    expect(object?.$date).to(equal(Date(timeIntervalSince1970: 0)))
+                }
+                
+                it("should decode properly using Default") {
+                    object = try? self.jsonDecoder.decode(MilliSecondDate.self, from: jsonData)
+                    
+                    let calendar = Calendar.current
+                    let actualDate = calendar.date(from: .init(timeZone: .init(secondsFromGMT: 0), year: 2010, month: 1, day: 9, hour: 3, minute: 37, second: 15))
+                    
+                    expect(object).toNot(beNil())
+                    expect(object?.date).to(equal(actualDate))
+                    expect(object?.$date).to(equal(actualDate!))
+                }
+                
+                it("should decode properly using custom") {
+                    object = try? MilliSecondDate.initialize(with: jsonData)
+                    
+                    let calendar = Calendar.current
+                    let actualDate = calendar.date(from: .init(timeZone: .init(secondsFromGMT: 0), year: 2010, month: 1, day: 9, hour: 3, minute: 37, second: 15))
+                    
+                    expect(object).toNot(beNil())
+                    expect(object?.date).to(equal(actualDate))
+                    expect(object?.$date).to(equal(actualDate!))
+                }
+                
+                it("should encode propery using default") {
+                    object = try? MilliSecondDate.initialize(with: jsonData)
+                    let data = try? self.jsonEncoder.encode(object)
+                    
+                    guard let data = data , let string = String(data: data, encoding: .utf8) else {
+                        fail("Unable to get valid string")
+                        return
+                    }
+                    
+                    let nsDict = try? JSONSerializer.toDictionary(string)
+                    let dict = nsDict?.swiftDictionary
+                    expect(dict).toNot(beNil())
+                    expect(dict?["timeMilli"] as? TimeInterval).to(equal(1263008235000))
+                }
+                
+                it("should encode propery using custom") {
+                    object = try? MilliSecondDate.initialize(with: jsonData)
+                    
+                    let dict = object?.dictionary
+                    expect(dict).toNot(beNil())
+                    expect(dict?["timeMilli"] as? TimeInterval).to(equal(1263008235000))
+                }
+            }
         }
     }
 }
@@ -279,7 +334,8 @@ fileprivate let jsonData = """
     "base64Encoded": "SGkhIHRoZXJlLiBJJ20gaGFwcHkgdG8gc2VlIHlvdS4=",
     "url": "https://www.apple.com",
     "datetime": "2021-09-12T23:43:33Z",
-    "time": 1263008235
+    "time": 1263008235,
+    "timeMilli": 1263008235000
 }
 """.data(using: .utf8)!
 
@@ -300,6 +356,11 @@ fileprivate struct RFCDate: SGCodable {
 
 fileprivate struct TimeIntervalDate: SGCodable {
     @SGTransformSerializable<TimeIntervalToDate>(key: "time")
+    var date: Date?
+}
+
+fileprivate struct MilliSecondDate: SGCodable {
+    @SGTransformSerializable<MilliSecondsToDate>(key: "timeMilli")
     var date: Date?
 }
 
