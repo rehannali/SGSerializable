@@ -13,12 +13,12 @@ public struct MilliSecondsToDate: SGTranformable {
     public typealias ToType = Date
     
     public static func transform(from value: TimeInterval?) -> Date? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return Date(timeIntervalSince1970: value / 1000)
     }
     
     public static func transform(from value: Date?) -> TimeInterval? {
-        guard let value else { return nil }
+        guard let value = value else { return nil }
         return value.timeIntervalSince1970 * 1000
     }
 }
