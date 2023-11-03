@@ -245,6 +245,7 @@ StringToBase64Data
 StringToDateISO8601
 StringToDateRFC3339
 TimeIntervalToDate
+MilliSecondsToDate
 StringToURL
 ```
 
