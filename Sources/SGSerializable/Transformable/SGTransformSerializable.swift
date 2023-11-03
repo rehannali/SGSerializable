@@ -12,21 +12,21 @@ import Foundation
     ///
     /// You must provide custom implementation of `SGTranformable` which is needed for transformation.
 @propertyWrapper
-public final class SGTransformSerializable<Value: SGTranformable> {
-    public var wrappedValue: Value.ToType?
+public final class SGTransformSerializable<Transform: SGTranformable> {
+    public var wrappedValue: Transform.ToType?
     public var name: String?
     
-    public var projectedValue: Value.ToType {
+    public var projectedValue: Transform.ToType {
         set { wrappedValue = newValue }
         get {
             guard let wrappedValue = wrappedValue else {
-                return getFallBack(Value.ToType.self)
+                return getFallBack(Transform.ToType.self)
             }
             return wrappedValue
         }
     }
     
-    public init(default value: Value.ToType? = nil, key: String? = nil) {
+    public init(default value: Transform.ToType? = nil, key: String? = nil) {
         self.wrappedValue = value
         self.name = key
     }
@@ -34,7 +34,7 @@ public final class SGTransformSerializable<Value: SGTranformable> {
 
 extension SGTransformSerializable {
     internal func getKey(with key: String) -> SGCodingKey {
-        let cKey: SGCodingKey!
+        let cKey: SGCodingKey
         if let name = name, !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             cKey = SGCodingKey(name: name)
         }else {

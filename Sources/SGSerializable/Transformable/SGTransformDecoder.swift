@@ -8,10 +8,9 @@
 
 import Foundation
 
-extension SGTransformSerializable: SGDecoder where Value.FromType: Decodable {
+extension SGTransformSerializable: SGDecoder where Transform.FromType: Decodable {
     func decodeValue(from container: DecodeContainer, with key: String) throws {
-        if let value = try? container.decodeIfPresent(Value.FromType.self, forKey: getKey(with: key)) {
-            wrappedValue = Value.transform(from: value)
-        }
+        let value = try container.decodeIfPresent(Transform.FromType.self, forKey: getKey(with: key))
+        wrappedValue = Transform.transform(from: value)
     }
 }
