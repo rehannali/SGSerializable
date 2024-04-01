@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,9 +6,9 @@ import PackageDescription
 let package = Package(
     name: "SGSerializable",
     platforms: [
-        .iOS(.v12),
+        .iOS(.v11),
         .macOS(.v10_15),
-        .tvOS(.v12),
+        .tvOS(.v11),
         .watchOS(.v6)
     ],
     products: [
