@@ -23,7 +23,8 @@ let package = Package(
     targets: [
         .target(
             name: "SGSerializable",
-            dependencies: []),
+            path: "Sources",
+            resources: [.copy("PrivacyInfo.xcprivacy")]),
         .testTarget(
             name: "SGSerializableTests",
             dependencies: ["SGSerializable", "Quick", "Nimble"]),
