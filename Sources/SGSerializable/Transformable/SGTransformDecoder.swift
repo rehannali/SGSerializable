@@ -11,6 +11,6 @@ import Foundation
 extension SGTransformSerializable: SGDecoder where Transform.FromType: Decodable {
     func decodeValue(from container: DecodeContainer, with key: String) throws {
         let value = try container.decodeIfPresent(Transform.FromType.self, forKey: getKey(with: key))
-        wrappedValue = Transform.transform(from: value)
+        _wrappedValue = Transform.transform(from: value)
     }
 }
