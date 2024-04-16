@@ -90,10 +90,10 @@ fileprivate let jsonData = """
 
 fileprivate struct Test: SGCodable {
     @SGTransformSerializable<IntToString>(default: "")
-    var num: String?
+    var num: String
     
     @SGTransformSerializable<IntToString>
-    var sum: String?
+    var sum: String
 }
 
 

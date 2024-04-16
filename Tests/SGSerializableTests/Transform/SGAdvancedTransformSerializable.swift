@@ -111,8 +111,8 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                 it("should access default value before [En/De]Coding") {
                     object = RFCDate()
                     expect(object).toNot(beNil())
-                    expect(object?.date).to(beNil())
-                    expect(object?.$date) == Date(timeIntervalSince1970: 0)
+                    expect(object?.$date).to(beNil())
+                    expect(object?.date) == Date(timeIntervalSince1970: 0)
                 }
                 
                 it("should decode properly using Default") {
@@ -166,8 +166,8 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                 it("should access default value before [En/De]Coding") {
                     object = ISODate()
                     expect(object).toNot(beNil())
-                    expect(object?.date).to(beNil())
-                    expect(object?.$date).to(equal(Date(timeIntervalSince1970: 0)))
+                    expect(object?.$date).to(beNil())
+                    expect(object?.date).to(equal(Date(timeIntervalSince1970: 0)))
                 }
                 
                 it("should decode properly using Default") {
@@ -221,8 +221,8 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                 it("should access default value before [En/De]Coding") {
                     object = TimeIntervalDate()
                     expect(object).toNot(beNil())
-                    expect(object?.date).to(beNil())
-                    expect(object?.$date).to(equal(Date(timeIntervalSince1970: 0)))
+                    expect(object?.$date).to(beNil())
+                    expect(object?.date).to(equal(Date(timeIntervalSince1970: 0)))
                 }
                 
                 it("should decode properly using Default") {
@@ -276,8 +276,8 @@ class SGAdvancedTransformSerializable: QuickSpec, EncodableTestSpec, DecodableTe
                 it("should access default value before [En/De]Coding") {
                     object = MilliSecondDate()
                     expect(object).toNot(beNil())
-                    expect(object?.date).to(beNil())
-                    expect(object?.$date).to(equal(Date(timeIntervalSince1970: 0)))
+                    expect(object?.$date).to(beNil())
+                    expect(object?.date).to(equal(Date(timeIntervalSince1970: 0)))
                 }
                 
                 it("should decode properly using Default") {
@@ -341,30 +341,30 @@ fileprivate let jsonData = """
 
 fileprivate struct Base64Encoded: SGCodable {
     @SGTransformSerializable<StringToBase64Data>(default: "".data(using: .utf8) , key: "base64Encoded")
-    var encoded: Data?
+    var encoded: Data
 }
 
 fileprivate struct ISODate: SGCodable {
     @SGTransformSerializable<StringToDateISO8601>(key: "datetime")
-    var date: Date?
+    var date: Date
 }
 
 fileprivate struct RFCDate: SGCodable {
     @SGTransformSerializable<StringToDateRFC3339>(key: "datetime")
-    var date: Date?
+    var date: Date
 }
 
 fileprivate struct TimeIntervalDate: SGCodable {
     @SGTransformSerializable<TimeIntervalToDate>(key: "time")
-    var date: Date?
+    var date: Date
 }
 
 fileprivate struct MilliSecondDate: SGCodable {
     @SGTransformSerializable<MilliSecondsToDate>(key: "timeMilli")
-    var date: Date?
+    var date: Date
 }
 
 fileprivate struct StringURL: SGCodable {
     @SGTransformSerializable<StringToURL>
-    var url: URL?
+    var url: URL
 }
