@@ -10,6 +10,6 @@ import Foundation
 
 extension SGTransformSerializable: SGEncoder where Transform.FromType: Encodable {
     func encodeValue(from container: inout EncodeContainer, with key: String) throws {
-        try container.encodeIfPresent(Transform.transform(from: wrappedValue), forKey: getKey(with: key))
+        try container.encodeIfPresent(Transform.transform(from: _wrappedValue), forKey: getKey(with: key))
     }
 }

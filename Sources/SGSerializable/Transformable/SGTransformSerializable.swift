@@ -13,21 +13,26 @@ import Foundation
     /// You must provide custom implementation of `SGTranformable` which is needed for transformation.
 @propertyWrapper
 public final class SGTransformSerializable<Transform: SGTranformable> {
-    public var wrappedValue: Transform.ToType?
+    internal var _wrappedValue: Transform.ToType?
     public var name: String?
     
-    public var projectedValue: Transform.ToType {
-        set { wrappedValue = newValue }
+    public var wrappedValue: Transform.ToType {
+        set { _wrappedValue = newValue }
         get {
-            guard let wrappedValue = wrappedValue else {
+            guard let safeValue = _wrappedValue else {
                 return getFallBack(Transform.ToType.self)
             }
-            return wrappedValue
+            return safeValue
         }
     }
     
+    public var projectedValue: Transform.ToType? {
+        set { _wrappedValue = newValue }
+        get { return _wrappedValue }
+    }
+    
     public init(default value: Transform.ToType? = nil, key: String? = nil) {
-        self.wrappedValue = value
+        self._wrappedValue = value
         self.name = key
     }
 }
